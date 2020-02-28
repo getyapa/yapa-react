@@ -87,12 +87,12 @@ export interface BoardHook {
   allPosts: Post[]
   editing: number
   query: BoardQuery
-  push(post: string)
-  set(index: number, post: string)
-  delete(index: number)
-  setEditing(index: number)
-  up()
-  down()
+  push(post: string): void
+  set(index: number, post: string): void
+  delete(index: number): void
+  setEditing(index: number): void
+  up(): void
+  down(): void
 }
 
 interface FilteredPost extends Post {
@@ -105,7 +105,7 @@ export function useBoard(): BoardHook {
   const [query, setQuery] = useState<BoardQuery>({})
   const [editing, setEditing] = useState<number>(-1)
 
-  function updatePosts() {
+  function updatePosts(allPosts: Post[]) {
     const result = []
     for (const post of allPosts) {
       // TODO
@@ -125,10 +125,9 @@ export function useBoard(): BoardHook {
     query,
     push,
     set(index, text) {
-      setPosts(posts =>
+      setAllPosts(posts =>
         posts.map((p, i) => {
           if (index !== i) return p
-
           return parsePost({ blocks, inlines, text, createdAt: p.createdAt, updatedAt: Date.now() })
         })
       )
