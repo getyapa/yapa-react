@@ -1,0 +1,27 @@
+{
+  "name": "yapa-react",
+  "version": "0.1.0",
+  "description": "The react component for getyapa.com",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "clean": "rimraf dist",
+    "build": "npm run clean && tsc"
+  },
+  "devDependencies": {
+    "@types/react": "16.9.23",
+    "@types/react-dom": "16.9.5",
+    "react": "16.13.0",
+    "react-dom": "16.13.0",
+    "rimraf": "3.0.2",
+    "typescript": "3.8.2"
+  },
+  "peerDependencies": {
+    "react": ">=16.8.0"
+  },
+  "author": "Anthony Ferrando",
+  "license": "Apache License"
+}
